@@ -8,7 +8,6 @@ const generateToken = (_id) =>{
 }
 exports.signIn = async(req,res) =>{
     try {
-        console.log(req.body)
         const {email,password} = req.body
         const user = await userModel.findOne({email})
         if(!user)
@@ -72,6 +71,14 @@ exports.updateLevel = async(req,res) =>{
             new:true
         })
         return res.status(200).json({user});
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}
+exports.getMySelf = async(req,res) =>{
+    try {
+        const user = req.user;
+        return res.status(200).json({user})
     } catch (error) {
         return res.status(500).json({message:error.message})
     }
