@@ -127,11 +127,11 @@ export default function HomPage() {
                                 placeholder='Enter correct word'
                                 className='w-full border  bg-transparent text-white focus:outline-none px-4 py-2 rounded-lg' />
                         </div>
-                        <div className='flex gap-4 items-center'>
+                        {/* <div className='flex gap-4 items-center'>
                             {userLevel.alterWord.split("").map((char) => (
                                 <span className='bg-green-500 text-white py-2 px-3 rounded'>{char}</span>
                             ))}
-                        </div>
+                        </div> */}
                     </div>
                     <div className='flex justify-end gap-4'>
                         <button className='bg-[#295725] px-4 py-2 rounded font-semibold' onClick={handleSubmit}>Submit</button>

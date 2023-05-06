@@ -1,14 +1,13 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { updateLevel } from '../redux/level/Api';
 
-export default function EditModal({open,setOpen,_id,level,word,alterWord,image}) {
+export default function EditModal({open,setOpen,_id,level,word,image}) {
 
   const handleClose = () => {
     setOpen(false);
@@ -17,14 +16,14 @@ export default function EditModal({open,setOpen,_id,level,word,alterWord,image})
     setIdUp(_id)
     setLevel(level)
     setWord(word)
-    setAlterWord(alterWord)
+    // setAlterWord(alterWord)
     setImage(image)
-  },[_id,level,word,image,alterWord])
+  },[_id,level,word,image])
 
   const [idUp,setIdUp] = React.useState("")
   const [levelUp,setLevel] = React.useState("")
   const [wordUp,setWord] = React.useState("")
-  const [alterWordUp,setAlterWord] = React.useState("")
+  // const [alterWordUp,setAlterWord] = React.useState("")
   const [imageUp,setImage] = React.useState("")
   
   const dispatch = useDispatch()
@@ -34,14 +33,14 @@ export default function EditModal({open,setOpen,_id,level,word,alterWord,image})
         _id:idUp,
         level:levelUp,
         word:wordUp.toUpperCase(),
-        alterWord:alterWordUp.toUpperCase(),
+        // alterWord:alterWordUp.toUpperCase(),
         image:imageUp
     }
     dispatch(updateLevel(data))
     setOpen(false);
     setLevel(0)
     setWord("")
-    setAlterWord("")
+    // setAlterWord("")
     setImage("")
   }
 
@@ -78,7 +77,7 @@ export default function EditModal({open,setOpen,_id,level,word,alterWord,image})
                     className='w-full border bg-transparent text-black focus:outline-none px-4 py-2 rounded-lg'
                 />
             </Box>
-            <Box className='flex gap-1 flex-col text-black'>
+            {/* <Box className='flex gap-1 flex-col text-black'>
                 <label htmlFor="alterWord" className='text-base font-semibold'>Enter Word</label>
                 <input 
                     type="text"
@@ -90,7 +89,7 @@ export default function EditModal({open,setOpen,_id,level,word,alterWord,image})
                     onChange={(e) => setAlterWord(e.target.value)}
                     className='w-full border bg-transparent text-black focus:outline-none px-4 py-2 rounded-lg'
                 />
-            </Box>
+            </Box> */}
             <Box className='flex gap-1 flex-col text-black'>
                 <label htmlFor="image" className='text-base font-semibold'>Enter Image Url</label>
                 <input 

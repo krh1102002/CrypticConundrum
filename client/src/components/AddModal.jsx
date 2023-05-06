@@ -16,7 +16,7 @@ export default function AddModal({open,setOpen}) {
 
   const [level,setLevel] = React.useState("")
   const [word,setWord] = React.useState("")
-  const [alterWord,setAlterWord] = React.useState("")
+  // const [alterWord,setAlterWord] = React.useState("")
   const [image,setImage] = React.useState("")
   
   const dispatch = useDispatch()
@@ -25,12 +25,12 @@ export default function AddModal({open,setOpen}) {
     const data = {
         level,
         word:word.toUpperCase(),
-        alterWord:alterWord.toUpperCase(),
+        // alterWord:alterWord.toUpperCase(),
         image
     }
     setLevel(0)
     setWord("")
-    setAlterWord("")
+    // setAlterWord("")
     setImage("")
 
     setOpen(false);
@@ -70,7 +70,7 @@ export default function AddModal({open,setOpen}) {
                     className='w-full border bg-transparent text-black focus:outline-none px-4 py-2 rounded-lg'
                 />
             </Box>
-            <Box className='flex gap-1 flex-col text-black'>
+            {/* <Box className='flex gap-1 flex-col text-black'>
                 <label htmlFor="alterWord" className='text-base font-semibold'>Enter Word</label>
                 <input 
                     type="text"
@@ -82,7 +82,7 @@ export default function AddModal({open,setOpen}) {
                     onChange={(e) => setAlterWord(e.target.value)}
                     className='w-full border bg-transparent text-black focus:outline-none px-4 py-2 rounded-lg'
                 />
-            </Box>
+            </Box> */}
             <Box className='flex gap-1 flex-col text-black'>
                 <label htmlFor="image" className='text-base font-semibold'>Enter Image Url</label>
                 <input 

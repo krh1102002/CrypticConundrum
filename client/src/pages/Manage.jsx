@@ -129,7 +129,7 @@ export default function ManagePage() {
   const [currId,setCurrId] = useState("")
   const [currLevel,setCurrLevel] = useState("")
   const [currWord,setCurrWord] = useState("")
-  const [currAlterWord,setCurrAlterWord] = useState("")
+  // const [currAlterWord,setCurrAlterWord] = useState("")
   const [currImage,setCurrImage] = useState("")
   const [isError,setIsError] = React.useState(false);
 
@@ -137,7 +137,7 @@ export default function ManagePage() {
     setCurrId(level._id)
     setCurrLevel(level.level)
     setCurrWord(level.word)
-    setCurrAlterWord(level.alterWord)
+    // setCurrAlterWord(level.alterWord)
     setCurrImage(level.image)
     setEditModalOpen(true)
   }
@@ -185,7 +185,7 @@ export default function ManagePage() {
         </div>}
     {levels && <div className=''>
         <AddModal open={addModalOpen} setOpen={setAddModalOpen} />
-        <EditModal open={editModalOpen} setOpen={setEditModalOpen} _id={currId} level={currLevel} word={currWord} alterWord={currAlterWord} image={currImage}/>
+        <EditModal open={editModalOpen} setOpen={setEditModalOpen} _id={currId} level={currLevel} word={currWord} image={currImage}/>
       <div className='flex justify-between items-center py-4'>
             <h1 className='py-2 md:px-6 px-2 md:text-2xl text-lg font-semibold text-white '>Manage Levels</h1>
             <div className='flex gap-2'>
@@ -202,7 +202,7 @@ export default function ManagePage() {
                 <TableRow>
                 <StyledTableCell align='center'>Level</StyledTableCell>
                 <StyledTableCell align='center'>Word</StyledTableCell>
-                <StyledTableCell align='center'>Alter Word</StyledTableCell>
+                {/* <StyledTableCell align='center'>Alter Word</StyledTableCell> */}
                 <StyledTableCell align='left'>Image</StyledTableCell>
                 <StyledTableCell align='center'>Actions</StyledTableCell>
                 </TableRow>
@@ -218,7 +218,7 @@ export default function ManagePage() {
                     Level {level.level}
                     </StyledTableCell>
                     <StyledTableCell align='center'>{level.word}</StyledTableCell>
-                    <StyledTableCell align='center'>{level.alterWord}</StyledTableCell>
+                    {/* <StyledTableCell align='center'>{level.alterWord}</StyledTableCell> */}
                     <StyledTableCell align='center'>
                         <img src={level.image} alt="" className='w-20 h-20'/>
                     </StyledTableCell>
