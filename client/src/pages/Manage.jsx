@@ -170,13 +170,6 @@ export default function ManagePage() {
           </div>
       )
   }
-  if(levels && levels.length<=0){
-    return (
-      <div className='flex items-center justify-center w-full py-3'>
-        <p className='text-gray-500 text-lg'>No  Levels Added</p>
-      </div>
-    )
-  }
   return (
     <div className='md:px-6 px-2'>
       {isError && error?.length>0 &&
@@ -196,7 +189,7 @@ export default function ManagePage() {
                 <button onClick={handleLogout} className='px-2 py-1 border rounded-xl hover:bg-white transition-colors duration-200 hover:text-[#2b2121] border-white text-white font-semibold'>Logout</button>
             </div>
       </div>
-    <TableContainer component={Paper} className=''>
+    {!levels || levels.length == 0 ? <h3 className='text-gray-400 text-center font-semibold text-lg'>No Levels Added</h3>:<TableContainer component={Paper} className=''>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
             <TableHead>
                 <TableRow>
@@ -265,7 +258,7 @@ export default function ManagePage() {
           </TableRow>
         </TableFooter>
       </Table>
-    </TableContainer>
+    </TableContainer>}
     </div>}
     </div>
   );
