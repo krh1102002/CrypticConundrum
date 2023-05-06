@@ -23,7 +23,7 @@ function NavbarSm({handleLogout,pathname}){
         <div className='flex flex-col  py-2 sm:px-4 px-2 gap-6'>
             <div className='flex justify-between gap-4 items-center py-2'>
                 <div className='flex gap-2 items-center'>
-                    <img src={Logo} alt="" className='w-20 h-auto'/>
+                    <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='w-20 h-auto'/>
                     <h2 className='text-white sm:text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
                 </div>
                 <button onClick={handleLogout} className='px-2 py-1 border rounded-xl hover:bg-white transition-colors duration-200 hover:text-[#2b2121] border-white text-white font-semibold'>Logout</button>
