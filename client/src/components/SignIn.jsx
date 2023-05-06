@@ -9,7 +9,6 @@ function SignIn() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [isSigning,setIsSigning] = useState(false)
-    const [errorData,setError] = useState("")
 
     const dispatch = useDispatch()
     const handleSubmit = (e) =>{
@@ -23,7 +22,9 @@ function SignIn() {
     const navigate = useNavigate()
     useEffect(() =>{
         setIsSigning(false)
-        if(user)
+        if(user && user?.isAdmin)
+            navigate("/manage")
+        else if(user)
             navigate("/")
     },[user,error])
     

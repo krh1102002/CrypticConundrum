@@ -6,10 +6,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
-import Logo from '../logo.png'
+import Logo from '../Logo.png'
 import { Alert } from '@mui/material';
-import { userRequest } from '../redux/user/Reducer';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,14 +50,13 @@ export default function AuthPage() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const dispatch = useDispatch()
+
   const {error} = useSelector((state) => state.user)
   React.useEffect(()=>{
     if(error.length>0){
         setIsError(true);
         setTimeout(()=>{
             setIsError(false)
-            dispatch(userRequest())
         },[8000])
     }
 

@@ -5,6 +5,9 @@ import { useEffect } from 'react'
 import AuthPage from './pages/AuthPage'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMySelf } from './redux/user/Api'
+import LeaderBoard from './pages/LeaderBoard'
+import ManagePage from './pages/Manage'
+
 function App() {
   const {user} = useSelector((state) => state.user)
   const navigate = useNavigate()
@@ -17,11 +20,14 @@ function App() {
     if(localStorage.crypticToken)
       dispatch(getMySelf())
   },[localStorage])
+  
   return (
-    <div className='bg-gradient-to-b from-[#201F1F] to-[#2E1310] h-screen w-screen'>
+    <div className='bg-gradient-to-b from-[#201F1F] to-[#2E1310] h-screen w-full overflow-y-auto'>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path='/leaderboard' element={<LeaderBoard />} />
+        <Route path='/manage' element={<ManagePage />} />
       </Routes>
     </div>
   )

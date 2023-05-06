@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
     loading:false,
     user:undefined,
+    userLevel:undefined,
     allUsers:[],
+    currLevels:[],
     error:""
 }
 const userSlice = createSlice({
@@ -14,14 +16,29 @@ const userSlice = createSlice({
             state.loading = true
             state.error = ""
         },
+        clearError:(state) =>{
+            state.loading = false,
+            state.error = ""
+        },
+        clearUser:(state) =>{
+            state.user = undefined
+        },
+        setUserLevel:(state,action) =>{
+            state.userLevel = action.payload
+        },
+        setCurrLevel:(state,action) =>{
+            state.currLevels = action.payload
+        },
         userSuccess:(state,action) =>{
             state.loading = false,
+            
             state.user = action.payload
             state.error = ""
         },
         allUserSuccess:(state,action) =>{
-            state.loading = false,
-            state.allUsers = action.payload
+            state.loading = false
+            let users = action.payload.sort((a,b) => b.level-a.level)
+            state.allUsers = users
             state.error = ""
         },
         userFail:(state,action) =>{
@@ -30,6 +47,6 @@ const userSlice = createSlice({
         }
     }
 })
-export const {userRequest,userSuccess,allUserSuccess,userFail} = userSlice.actions
+export const {userRequest,clearError,userSuccess,setCurrLevel,setUserLevel,allUserSuccess,clearUser,userFail} = userSlice.actions
 
 export default userSlice.reducer
