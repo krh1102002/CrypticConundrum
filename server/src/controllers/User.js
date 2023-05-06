@@ -64,7 +64,7 @@ exports.signUp = async(req,res) =>{
         return res.status(500).json({message:error.message})
     }
 }
-exports.updateLevel = async(req,res) =>{
+exports.updateUserLevel = async(req,res) =>{
     try {
         const {_id} = req.user
         const user = await userModel.findByIdAndUpdate(_id,{
@@ -73,6 +73,18 @@ exports.updateLevel = async(req,res) =>{
             new:true
         })
         return res.status(200).json({user});
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}
+exports.updateUserAttempt = async(req,res) =>{
+    try {
+        const {_id} = req.user
+        const {attempt} = req.body
+
+        const user = await userModel.findByIdAndUpdate(_id,{attempt},{new:true})
+
+        return res.status(200).json({user})
     } catch (error) {
         return res.status(500).json({message:error.message})
     }
@@ -87,7 +99,7 @@ exports.getMySelf = async(req,res) =>{
 }
 exports.getAllUsers = async(req,res) =>{
     try {
-        const user = await userModel.find().select("name prn level ")
+        const user = await userModel.find().select("name prn level attempt")
         return res.status(200).json({users:user})
     } catch (error) {
         return res.status(400).json({message:error.message})

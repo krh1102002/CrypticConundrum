@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         default:1
     },
+    attempt:{
+        type:Number,
+        required:true,
+        default:0
+    },
     password:{
         type:String,
         required:true

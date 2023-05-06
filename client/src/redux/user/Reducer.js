@@ -26,6 +26,9 @@ const userSlice = createSlice({
         setUserLevel:(state,action) =>{
             state.userLevel = action.payload
         },
+        setUserAttempt:(state,action) =>{
+            state.user.attempt = action.payload
+        },
         setCurrLevel:(state,action) =>{
             state.currLevels = action.payload
         },
@@ -47,6 +50,6 @@ const userSlice = createSlice({
         }
     }
 })
-export const {userRequest,clearError,userSuccess,setCurrLevel,setUserLevel,allUserSuccess,clearUser,userFail} = userSlice.actions
+export const {userRequest,clearError,setUserAttempt,userSuccess,setCurrLevel,setUserLevel,allUserSuccess,clearUser,userFail} = userSlice.actions
 
 export default userSlice.reducer

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
+import ReactLoading from 'react-loading';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -50,7 +51,7 @@ export default function AuthPage() {
     setValue(newValue);
   };
 
-  const {error} = useSelector((state) => state.user)
+  const {error,loading} = useSelector((state) => state.user)
   React.useEffect(()=>{
     if(error.length>0){
         setIsError(true);
@@ -60,11 +61,17 @@ export default function AuthPage() {
     }
 
   },[error])
+  if (loading) {
+    return (
+        <div className='flex justify-center items-center h-full w-full'>
+            <ReactLoading type={'spin'} color={'white'} height={'30px'} width={'30px'} />
+        </div>
+    )
+}
   return (
     <div className='h-full w-full flex flex-col justify-center items-center'>
         <div className='pt-2 pb-4 flex gap-2 items-center'> 
-            <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
-            <h2 className='text-white md:text-2xl text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
+            <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='md:w-44 w-36 h-auto bg-cover'/>
         </div>
         <Box className='flex flex-col lg:w-2/5 md:w-1/2 w-11/12 justify-center items-center rounded-xl bg-[#2f2424] shadow-lg shadow-black'>
             <Box sx={{ borderBottom: 1, borderColor: 'divider', color:'white' }} className='flex justify-center w-full text-white'>

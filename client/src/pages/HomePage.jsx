@@ -4,23 +4,26 @@ import ReactLoading from 'react-loading';
 import { getAllLevels } from '../redux/level/Api';
 import Navbar from '../components/Navbar';
 import { setCurrLevel, setUserLevel } from '../redux/user/Reducer';
-import { updateUser } from '../redux/user/Api';
+import { updateAttempt, updateUser } from '../redux/user/Api';
 import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomPage() {
-    const dispatch = useDispatch()
-    const { user, userLevel, loading, currLevels } = useSelector((state) => state.user)
-    const { levels } = useSelector((state) => state.level)
     const [isCorrect, setIsCorrect] = React.useState(true)
     const [guessCorrect, setGuessCorrect] = React.useState(false)
     const [word, setWord] = React.useState("")
+    
+    const { user, userLevel, loading, currLevels } = useSelector((state) => state.user)
+    const { levels } = useSelector((state) => state.level)
+    
+    const dispatch = useDispatch()
 
     const range = (start, end, step) => {
         return Array.from(Array.from(Array(Math.ceil((end - start) / step)).keys()), x => start + x * step);
     }
     React.useEffect(() => {
-        dispatch(getAllLevels())
+        if(localStorage.crypticToken)
+            dispatch(getAllLevels())
     }, [])
 
     let s, e;
@@ -65,7 +68,7 @@ export default function HomPage() {
             let data = levels.find((lev) => lev.level === user.level)
             dispatch(setUserLevel(data))
         }
-    }, [user, levels])
+    }, [user?.level, levels])
     const handleSubmit = () => {
         if (word.toUpperCase() === userLevel?.word) {
             setGuessCorrect(true)
@@ -75,6 +78,7 @@ export default function HomPage() {
             }, [2000])
             setIsCorrect(true)
             dispatch(updateUser(user.level + 1))
+            
         } else {
             setIsCorrect(false)
             setWord("")
@@ -82,6 +86,7 @@ export default function HomPage() {
                 setIsCorrect(true)
             }, [4000])
         }
+        dispatch(updateAttempt(user.attempt + 1))
     }
 
     if (loading) {
@@ -103,7 +108,7 @@ export default function HomPage() {
             <div className='sm:hidden flex justify-center py-2'>
                 {currLevels?.length > 0 && userLevel && <div className='flex gap-1.5'>
                     {currLevels.map((e) => (
-                        <div className={`text-white  ${user.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-1.5 py-2 rounded-lg`}>
+                        <div className={`text-white  ${user?.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-1.5 py-2 rounded-lg`}>
                             <span>Lv {e}</span>
                         </div>
                     ))}

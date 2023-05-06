@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../redux/user/Api'
 
@@ -7,8 +7,7 @@ function NavbarLg({handleLogout,pathname}){
     return(
             <div className='flex justify-between py-4 px-12 shadow-lg sticky top-0 z-10'>
               <div className='flex gap-2 items-center'>
-                <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
-                <h2 className='text-white md:text-2xl text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
+                <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='w-40  h-auto bg-cover'/>
               </div>
               <div className='flex gap-6 font-semibold items-center font-sans text-lg'>
                 <Link to='/' className={`${pathname==='/'?'border-b-2 border-white':''}`}>Home</Link>
@@ -23,8 +22,7 @@ function NavbarSm({handleLogout,pathname}){
         <div className='flex flex-col  py-2 sm:px-4 px-2 gap-6'>
             <div className='flex justify-between gap-4 items-center py-2'>
                 <div className='flex gap-2 items-center'>
-                    <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='w-20 h-auto'/>
-                    <h2 className='text-white sm:text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
+                    <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='sm:w-36 w-32 h-auto'/>
                 </div>
                 <button onClick={handleLogout} className='px-2 py-1 border rounded-xl hover:bg-white transition-colors duration-200 hover:text-[#2b2121] border-white text-white font-semibold'>Logout</button>
             </div>
@@ -37,9 +35,11 @@ function NavbarSm({handleLogout,pathname}){
 }
 function Navbar() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleLogout = (e) =>{
         e.preventDefault()
         dispatch(logout())
+        navigate('/auth')
     }
     const {pathname} = useLocation()
     return(
