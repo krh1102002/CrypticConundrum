@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
-import Logo from '../Logo.png'
 import { Alert } from '@mui/material';
 import { useSelector } from 'react-redux';
 
