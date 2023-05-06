@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import ReactLoading from 'react-loading';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -144,7 +145,7 @@ export default function ManagePage() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  const {levels,error} = useSelector((state) => state.level);
+  const {levels,error,loading} = useSelector((state) => state.level);
   useEffect(()=>{
     dispatch(getAllLevels())
   },[])
@@ -157,6 +158,18 @@ export default function ManagePage() {
     }
 
   },[error])
+  
+    const handleLogout = (e) =>{
+        e.preventDefault()
+        dispatch(logout())
+    }
+    if (loading) {
+      return (
+          <div className='flex justify-center items-center h-full w-full'>
+              <ReactLoading type={'spin'} color={'white'} height={'30px'} width={'30px'} />
+          </div>
+      )
+  }
   if(levels && levels.length<=0){
     return (
       <div className='flex items-center justify-center w-full py-3'>
@@ -164,11 +177,6 @@ export default function ManagePage() {
       </div>
     )
   }
-    const handleLogout = (e) =>{
-        e.preventDefault()
-        dispatch(logout())
-    }
-    
   return (
     <div className='md:px-6 px-2'>
       {isError && error?.length>0 &&
