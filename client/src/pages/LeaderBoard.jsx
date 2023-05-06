@@ -149,7 +149,7 @@ export default function ManagePage() {
   return (
     <div className='md:px-6 px-2 text-white'>
       <Navbar />
-    {leaderboardUsers && <div className=''>
+    {leaderboardUsers ? <div className=''>
       <h1 className='text-2xl font-semibold py-4'>LeaderBoard Ranking</h1>
     <TableContainer component={Paper} >
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
@@ -207,7 +207,9 @@ export default function ManagePage() {
         </TableFooter>
       </Table>
     </TableContainer>
-    </div>}
+    </div>:<div className='py-4'>
+              <h3 className='text-center font-semibold text-lg text-gray-300'>No User Played</h3>
+      </div>}
     </div>
   );
 }
