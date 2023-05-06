@@ -1,7 +1,6 @@
 const express = require('express')
 const isUser = require('../middleware/isUser')
-const { createLevel, getAllLevel, deleteLevel } = require('../controllers/Level')
-const { updateLevel } = require('../controllers/User')
+const { createLevel, getAllLevel, deleteLevel,updateLevel } = require('../controllers/Level')
 
 const router = express.Router()
 
@@ -11,6 +10,6 @@ router.get('/all',isUser,getAllLevel)
 
 router.delete('/',deleteLevel)
 
-router.put('/',updateLevel)
+router.put('/',isUser,updateLevel)
 
 module.exports = router

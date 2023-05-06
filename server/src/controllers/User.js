@@ -24,6 +24,7 @@ exports.signIn = async(req,res) =>{
             prn:user.prn,
             level:user.level,
             year:user.year,
+            isAdmin:user.isAdmin,
             token
         }
         return res.status(200).json({user:userData})
@@ -55,6 +56,7 @@ exports.signUp = async(req,res) =>{
             prn:user.prn,
             level:user.level,
             year:user.year,
+            isAdmin:user.isAdmin,
             token
         }
         return res.status(201).json({user:userData});
@@ -85,7 +87,7 @@ exports.getMySelf = async(req,res) =>{
 }
 exports.getAllUsers = async(req,res) =>{
     try {
-        const user = await userModel.find().select("name prn level")
+        const user = await userModel.find().select("name prn level ")
         return res.status(200).json({users:user})
     } catch (error) {
         return res.status(400).json({message:error.message})

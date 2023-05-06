@@ -29,7 +29,7 @@ exports.deleteLevel = async(req,res) =>{
         await levelModel.findByIdAndDelete(_id)
         return res.status(200).json({message:"Level Deleted"})
     } catch (error) {
-        
+        return res.status(500).json({message:error.message});
     }
 }
 exports.updateLevel = async(req,res) =>{
@@ -40,11 +40,11 @@ exports.updateLevel = async(req,res) =>{
             alterWord:req.body?.alterWord,
             image:req.body?.image
         }
-        const level = await levelModel.findByIdAndUpdate(req.body._id,{data},{new:true})
-
+        const level = await levelModel.findByIdAndUpdate(req.body._id,data,{new:true})
+        console.log(level)
         return res.status(200).json({level})
     } catch (error) {
-        
+        return res.status(500).json({message:error.message});
     }
 }
 exports.getAllLevel = async(req,res) =>{
