@@ -6,7 +6,7 @@ export const signIn = (data) => async(dispatch) =>{
         dispatch(userRequest())
         const user = await axios({
             method:"POST",
-            url:'http://localhost:4000/user/signIn',
+            url:'https://wordguessingserver.onrender.com/user/signIn',
             data
         })
         axios.defaults.headers.common["Authorization"] = `Bearer ${user.data.user.token}`
@@ -21,7 +21,7 @@ export const signUp = (data) => async(dispatch) =>{
         dispatch(userRequest())
         const user = await axios({
             method:"POST",
-            url:'http://localhost:4000/user/signUp',
+            url:'https://wordguessingserver.onrender.com/user/signUp',
             data
         })
         axios.defaults.headers.common["Authorization"] = `Bearer ${user.data.user.token}`
@@ -36,7 +36,7 @@ export const getMySelf = () => async(dispatch) =>{
         dispatch(userRequest())
         const user = await axios({
             method:'GET',
-            url:'http://localhost:4000/user/me'
+            url:'https://wordguessingserver.onrender.com/user/me'
         })
         dispatch(userSuccess(user.data.user))
     } catch (error) {
@@ -56,7 +56,7 @@ export const updateUser = (level) => async(dispatch) =>{
         dispatch(userRequest())
         const user = await axios({
             method:"PUT",
-            url:'http://localhost:4000/user/update',
+            url:'https://wordguessingserver.onrender.com/user/update',
             data:{level}
         })
         dispatch(userSuccess(user.data.user))
@@ -69,7 +69,7 @@ export const updateAttempt = (attempt) => async(dispatch) =>{
         // dispatch(userRequest())
         await axios({
             method:"PUT",
-            url:'http://localhost:4000/user/updateAttempt',
+            url:'https://wordguessingserver.onrender.com/user/updateAttempt',
             data:{attempt}
         })
         dispatch(setUserAttempt(attempt))
@@ -82,7 +82,7 @@ export const getAllUser = () => async(dispatch) =>{
         dispatch(userRequest())
         const users = await axios({
             method:"GET",
-            url:'http://localhost:4000/user/all'
+            url:'https://wordguessingserver.onrender.com/user/all'
         })
         dispatch(allUserSuccess(users.data.users))
     } catch (error) {
