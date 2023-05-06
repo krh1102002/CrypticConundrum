@@ -1,5 +1,4 @@
 import React from 'react'
-import Logo from '../logo.png'
 import { Link, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../redux/user/Api'
@@ -8,7 +7,7 @@ function NavbarLg({handleLogout,pathname}){
     return(
             <div className='flex justify-between py-4 px-12 shadow-lg sticky top-0 z-10'>
               <div className='flex gap-2 items-center'>
-                <img src={Logo} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
+                <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
                 <h2 className='text-white md:text-2xl text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
               </div>
               <div className='flex gap-6 font-semibold items-center font-sans text-lg'>

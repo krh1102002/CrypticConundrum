@@ -64,7 +64,7 @@ export default function AuthPage() {
   return (
     <div className='h-full w-full flex flex-col justify-center items-center'>
         <div className='pt-2 pb-4 flex gap-2 items-center'> 
-            <img src={Logo} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
+            <img src={'https://res.cloudinary.com/dkgoet9em/image/upload/v1683354142/TiffinManagment/Logo_i1c5l3.png'} alt="" className='md:w-32 w-24 h-auto bg-cover'/>
             <h2 className='text-white md:text-2xl text-lg font-mono font-semibold'>Cryptic Conundrum</h2>
         </div>
         <Box className='flex flex-col lg:w-2/5 md:w-1/2 w-11/12 justify-center items-center rounded-xl bg-[#2f2424] shadow-lg shadow-black'>
