@@ -12,7 +12,7 @@ router.get("/me",isUser,getMySelf);
 
 router.put('/update',isUser,updateUserLevel)
 
-router.get('/isMatch',isUser,isWordMatch);
+// router.get('/isMatch',isUser,isWordMatch);
 
 router.put("/updateAttempt",isUser,updateUserAttempt);
 

@@ -29,17 +29,7 @@ exports.deleteLevel = async(req,res) =>{
         return res.status(500).json({message:error.message});
     }
 }
-exports.isWordMatch = async(req,res) =>{
-    try {
-        const {word,_id} = req.body
-        const level = await levelModel.findById(_id);
-        const isMatch = await bcrypt.compare(word,level.word)
 
-        return res.status(200).json({isMatch})
-    } catch (error) {
-        return res.status(500).json({message:error.message});
-    }
-}
 exports.updateLevel = async(req,res) =>{
     try {
         const data = {
