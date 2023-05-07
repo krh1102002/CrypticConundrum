@@ -6,5 +6,5 @@ export const store = configureStore({
     user:userSlice,
     level:levelSlice
   },
-  devTools: process.env.NODE_ENV !== 'production'
+  devTools: false
 })
