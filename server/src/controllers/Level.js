@@ -10,7 +10,6 @@ exports.createLevel = async(req,res) =>{
         const data = await levelModel.create({
             level,
             word,
-            // alterWord,
             image
         })
         return res.status(201).json({level:data})
@@ -26,6 +25,17 @@ exports.deleteLevel = async(req,res) =>{
         
         await levelModel.findByIdAndDelete(_id)
         return res.status(200).json({message:"Level Deleted"})
+    } catch (error) {
+        return res.status(500).json({message:error.message});
+    }
+}
+exports.isWordMatch = async(req,res) =>{
+    try {
+        const {word,_id} = req.body
+        const level = await levelModel.findById(_id);
+        const isMatch = await bcrypt.compare(word,level.word)
+
+        return res.status(200).json({isMatch})
     } catch (error) {
         return res.status(500).json({message:error.message});
     }

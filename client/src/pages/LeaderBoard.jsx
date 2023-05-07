@@ -159,7 +159,7 @@ export default function ManagePage() {
                   <StyledTableCell align='center'>PRN</StyledTableCell>
                   <StyledTableCell align='center'>Level</StyledTableCell>
                   {/* <StyledTableCell align='center'>Attempts</StyledTableCell> */}
-                  {/* <StyledTableCell align='center'>Last Submission</StyledTableCell> */}
+                  <StyledTableCell align='center'>Last Submission</StyledTableCell>
 
                 </TableRow>
             </TableHead>
@@ -175,7 +175,7 @@ export default function ManagePage() {
                     <StyledTableCell align='center'>{user.prn}</StyledTableCell>
                     <StyledTableCell align='center'>{user.level}</StyledTableCell>
                     {/* <StyledTableCell align='center'>{user.attempt}</StyledTableCell> */}
-                    {/* <StyledTableCell align='center'>{new Date(user.time).toLocaleTimeString('en-US')}</StyledTableCell> */}
+                    <StyledTableCell align='center'>{new Date(user.time).toLocaleTimeString('en-US')}</StyledTableCell>
                 </StyledTableRow>}
               </>
           ))}
