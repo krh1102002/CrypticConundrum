@@ -86,7 +86,7 @@ export default function HomPage() {
                 setIsCorrect(true)
             }, [4000])
         }
-        dispatch(updateAttempt(user.attempt + 1))       
+        // dispatch(updateAttempt(user.attempt + 1))       
     }
 
     if (loading) {
