@@ -21,13 +21,7 @@ export default function HomPage() {
     const range = (start, end, step) => {
         return Array.from(Array.from(Array(Math.ceil((end - start) / step)).keys()), x => start + x * step);
     }
-    const [time,setTime] = React.useState()
-    React.useEffect(() => {
-        setTime(0)
-        setInterval(()=>{
-            setTime(time+1)
-        },[1000])
-        
+    React.useEffect(() => {        
         if(localStorage.crypticToken)
             dispatch(getAllLevels())
     }, [])
@@ -91,7 +85,8 @@ export default function HomPage() {
             setTimeout(() => {
                 setIsCorrect(true)
             }, [4000])
-        }        
+        }
+        dispatch(updateAttempt(user.attempt + 1))       
     }
 
     if (loading) {

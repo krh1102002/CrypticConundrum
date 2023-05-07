@@ -130,8 +130,8 @@ export default function ManagePage() {
       users.sort((a,b) =>{
         if(a.level > b.level)
             return -1;
-        else if(a.level==b.level &&  a.time < b.time)
-            return -1;
+        else if(a.level == b.level && a.time < b.time)
+          return -1;
         else
             return 1
       })
@@ -158,7 +158,8 @@ export default function ManagePage() {
                   <StyledTableCell align='center'>Name</StyledTableCell>
                   <StyledTableCell align='center'>PRN</StyledTableCell>
                   <StyledTableCell align='center'>Level</StyledTableCell>
-                  <StyledTableCell align='center'>Last Submission</StyledTableCell>
+                  {/* <StyledTableCell align='center'>Attempts</StyledTableCell> */}
+                  {/* <StyledTableCell align='center'>Last Submission</StyledTableCell> */}
 
                 </TableRow>
             </TableHead>
@@ -173,7 +174,8 @@ export default function ManagePage() {
                     <StyledTableCell align='center'>{user.name}</StyledTableCell>
                     <StyledTableCell align='center'>{user.prn}</StyledTableCell>
                     <StyledTableCell align='center'>{user.level}</StyledTableCell>
-                    <StyledTableCell align='center'>{new Date(user.time).toLocaleTimeString('en-US')}</StyledTableCell>
+                    {/* <StyledTableCell align='center'>{user.attempt}</StyledTableCell> */}
+                    {/* <StyledTableCell align='center'>{new Date(user.time).toLocaleTimeString('en-US')}</StyledTableCell> */}
                 </StyledTableRow>}
               </>
           ))}
