@@ -76,7 +76,6 @@ export default function HomPage() {
         }
     }, [user?.level, levels])
     const handleSubmit = () => {
-        console.log(Date.now())
         if (word.toUpperCase() === userLevel?.word) {
             setGuessCorrect(true)
             setWord("")
@@ -84,7 +83,6 @@ export default function HomPage() {
                 setGuessCorrect(false)
             }, [2000])
             setIsCorrect(true)
-            console.log(user.attempt)
             dispatch(updateUser({level:user.level+1,time:Date.now()}))
             
         } else {

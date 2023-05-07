@@ -6,7 +6,7 @@ export const getAllLevels = () => async(dispatch) =>{
         dispatch(levelRequest())
         const levels = await axios({
             method:"GET",
-            url:"https://wordguessingserver.onrender.com/level/all"
+            url:"http://localhost:4000/level/all"
         })
         dispatch(levelSuccess(levels.data.levels))
     } catch (error) {
@@ -18,7 +18,7 @@ export const addLevel = (data) => async(dispatch) =>{
         dispatch(levelRequest())
         const level = await axios({
             method:"POST",
-            url:'https://wordguessingserver.onrender.com/level/create',
+            url:'http://localhost:4000/level/create',
             data
         })
         dispatch(addLevelSuccess(level.data.level))
@@ -29,10 +29,9 @@ export const addLevel = (data) => async(dispatch) =>{
 export const updateLevel = (data) => async(dispatch) =>{
     try {
         dispatch(levelRequest())
-        console.log(data)
         await axios({
             method:"PUT",
-            url:'https://wordguessingserver.onrender.com/level',
+            url:'http://localhost:4000/level',
             data
         })
         dispatch(updateLevelSuccess(data))
@@ -44,7 +43,7 @@ export const deleteLevel = (_id) => async(dispatch) =>{
     try {
         await axios({
             method:"DELETE",
-            url:"https://wordguessingserver.onrender.com/level",
+            url:"http://localhost:4000/level",
             data:{_id}
         })
         dispatch(levelDeleteSuccess(_id))

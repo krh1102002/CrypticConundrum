@@ -39,7 +39,6 @@ exports.updateLevel = async(req,res) =>{
             image:req.body?.image
         }
         const level = await levelModel.findByIdAndUpdate(req.body._id,data,{new:true})
-        console.log(level)
         return res.status(200).json({level})
     } catch (error) {
         return res.status(500).json({message:error.message});

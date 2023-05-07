@@ -23,12 +23,13 @@ function App() {
   
   return (
     <div className='bg-gradient-to-b from-[#201F1F] to-[#2E1310] h-screen w-full overflow-y-auto'>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path='/leaderboard' element={<LeaderBoard />} />
         <Route path='/manage' element={<ManagePage />} />
-      </Routes>
+      </Routes> */}
+      <h1 className='text-gray-500 text-center py-6'>Plzz Register Your self at 10:30 AM We are facing some issues</h1>
     </div>
   )
 }

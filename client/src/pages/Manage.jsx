@@ -122,7 +122,6 @@ export default function ManagePage() {
   const dispatch = useDispatch()
   const handleDelete = (level) =>{
     let toDelete = window.confirm("Do you want to delete level")
-    console.log(level._id)
     if(toDelete)
         dispatch(deleteLevel(level._id))
   }
