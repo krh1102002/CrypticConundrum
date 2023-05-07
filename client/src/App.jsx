@@ -23,13 +23,13 @@ function App() {
   
   return (
     <div className='bg-gradient-to-b from-[#201F1F] to-[#2E1310] h-screen w-full overflow-y-auto'>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path='/leaderboard' element={<LeaderBoard />} />
         <Route path='/manage' element={<ManagePage />} />
-      </Routes> */}
-      <h1 className='text-lg text-gray-300 text-center py-6'>We Are Facing Some Issues</h1>
+      </Routes>
+      {/* <h1 className='text-lg text-gray-300 text-center py-6'>We Are Facing Some Issues</h1> */}
     </div>
   )
 }
