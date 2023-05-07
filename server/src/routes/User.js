@@ -1,7 +1,6 @@
 const express = require('express')
 const { signIn, signUp, updateUserLevel, getAllUsers, getMySelf, updateUserAttempt } = require('../controllers/User')
 const isUser = require('../middleware/isUser')
-const { isWordMatch } = require('../controllers/Level')
 const router = express.Router()
 
 router.post('/signIn',signIn)
