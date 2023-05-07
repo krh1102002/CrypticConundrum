@@ -210,9 +210,9 @@ export default function ManagePage() {
           {(rowsPerPage > 0
             ? levels.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : levels
-          ).map((level) => (
+          ).map((level,index) => (
             <>
-                <StyledTableRow key={level.image}>
+                <StyledTableRow key={index}>
                     <StyledTableCell align='center' component="th" scope="row">
                     Level {level.level}
                     </StyledTableCell>
