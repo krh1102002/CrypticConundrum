@@ -145,7 +145,6 @@ export default function ManagePage() {
           </div>
       )
   }
-  console.log(leaderboardUsers)
   return (
     <div className='md:px-6 px-2 text-white'>
       <Navbar />
@@ -158,7 +157,6 @@ export default function ManagePage() {
                   <StyledTableCell align='center'>Rank</StyledTableCell>
                   <StyledTableCell align='center'>Name</StyledTableCell>
                   <StyledTableCell align='center'>PRN</StyledTableCell>
-
                   <StyledTableCell align='center'>Level</StyledTableCell>
                   <StyledTableCell align='center'>Last Submission</StyledTableCell>
 
