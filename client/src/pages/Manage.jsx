@@ -22,6 +22,7 @@ import AddModal from '../components/AddModal';
 import { Alert } from '@mui/material';
 import { logout } from '../redux/user/Api';
 import EditModal from '../components/EditModal';
+import { useNavigate } from 'react-router-dom';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -146,9 +147,15 @@ export default function ManagePage() {
     setPage(0);
   };
   const {levels,error,loading} = useSelector((state) => state.level);
+  const {user} = useSelector((state) => state.user)
   useEffect(()=>{
     dispatch(getAllLevels())
   },[])
+  const navigate = useNavigate()
+  useEffect(() =>{
+    if(user && !user.isAdmin)
+      navigate("/")
+  },[user])
   useEffect(()=>{
     if(error.length>0){
         setIsError(true);

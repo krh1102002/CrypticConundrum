@@ -77,16 +77,19 @@ export default function HomPage() {
                 setGuessCorrect(false)
             }, [2000])
             setIsCorrect(true)
+            console.log(user.attempt)
+            dispatch(updateAttempt(user.attempt + 1))
             dispatch(updateUser(user.level + 1))
             
         } else {
             setIsCorrect(false)
             setWord("")
+            dispatch(updateAttempt(user.attempt + 1))
             setTimeout(() => {
                 setIsCorrect(true)
             }, [4000])
         }
-        dispatch(updateAttempt(user.attempt + 1))
+        
     }
 
     if (loading) {
@@ -107,8 +110,8 @@ export default function HomPage() {
             </div>}
             <div className='sm:hidden flex justify-center py-2'>
                 {currLevels?.length > 0 && userLevel && <div className='flex gap-1.5'>
-                    {currLevels.map((e) => (
-                        <div className={`text-white  ${user?.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-1.5 py-2 rounded-lg`}>
+                    {currLevels.map((e,index) => (
+                        <div key={index} className={`text-white  ${user?.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-1.5 py-2 rounded-lg`}>
                             <span>Lv {e}</span>
                         </div>
                     ))}
@@ -121,7 +124,9 @@ export default function HomPage() {
 
                     <div className='flex md:gap-8 gap-4 flex-col items-center'>
                         <h1 className='px-6 font-semibold md:text-xl text-base py-1'>Guess The Word From Image</h1>
-                        <img src={userLevel?.image} alt={userLevel?._id} className='w-40 h-40 rounded-full overflow-hidden' draggable='false' />
+                        <a href={userLevel?.image} target='_blank'>
+                            <img src={userLevel?.image} alt={userLevel?._id} className='w-40 h-40 rounded-full overflow-hidden' draggable='false' />
+                        </a>
                         <div className='w-full'>
                             <input
                                 type="text"
@@ -144,8 +149,8 @@ export default function HomPage() {
                 </div>
 
                 {currLevels?.length > 0 && <div className='sm:flex hidden flex-col gap-2'>
-                    {currLevels.map((e) => (
-                        <div className={`text-white  ${user.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-7 py-2 rounded-lg`}>
+                    {currLevels.map((e,index) => (
+                        <div key={index} className={`text-white  ${user.level === e ? 'bg-[#295725]' : 'bg-[#383434] '} ${user.level > e ? ' bg-green-600 ' : ''} px-7 py-2 rounded-lg`}>
                             <span>Level {e}</span>
                         </div>
                     ))}
