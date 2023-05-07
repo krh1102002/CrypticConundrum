@@ -25,6 +25,7 @@ const userSlice = createSlice({
         },
         setUserLevel:(state,action) =>{
             state.userLevel = action.payload
+            state.loading = false;
         },
         setUserAttempt:(state,action) =>{
             state.user.attempt = action.payload

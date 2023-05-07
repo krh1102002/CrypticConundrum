@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const helmet = require('helmet')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const user = require('./routes/User')
@@ -7,6 +8,7 @@ const level = require('./routes/Level')
 
 const app = express()
 app.use(cors())
+app.use(helmet())
 app.use(express.json())
 
 dotenv.config()

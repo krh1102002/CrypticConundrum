@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactLoading from 'react-loading';
 import { getAllLevels } from '../redux/level/Api';
 import Navbar from '../components/Navbar';
-import { setCurrLevel, setUserLevel } from '../redux/user/Reducer';
+import { setCurrLevel, setUserLevel, userRequest } from '../redux/user/Reducer';
 import { updateAttempt, updateUser } from '../redux/user/Api';
 import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
