@@ -102,7 +102,7 @@ TablePaginationActions.propTypes = {
 
 export default function ManagePage() {
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(8);
+    const [rowsPerPage, setRowsPerPage] = React.useState(100);
   
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - 10) : 0;
@@ -189,7 +189,7 @@ export default function ManagePage() {
         <TableFooter className=''>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[8, 16, { label: 'All', value: -1 }]}
+              rowsPerPageOptions={[200, 300, { label: 'All', value: -1 }]}
               colSpan={3}
               count={leaderboardUsers.length}
               rowsPerPage={rowsPerPage}
