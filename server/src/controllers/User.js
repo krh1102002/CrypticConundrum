@@ -25,6 +25,7 @@ exports.signIn = async(req,res) =>{
             level:user.level,
             year:user.year,
             isAdmin:user.isAdmin,
+            attempt:user.attempt,
             token
         }
         return res.status(200).json({user:userData})
@@ -57,6 +58,7 @@ exports.signUp = async(req,res) =>{
             level:user.level,
             year:user.year,
             isAdmin:user.isAdmin,
+            attempt:user.attempt,
             token
         }
         return res.status(201).json({user:userData});
@@ -67,8 +69,10 @@ exports.signUp = async(req,res) =>{
 exports.updateUserLevel = async(req,res) =>{
     try {
         const {_id} = req.user
+        const {time} = req.body
         const user = await userModel.findByIdAndUpdate(_id,{
-            level:req.body.level
+            level:req.body.level,
+            time
         },{
             new:true
         })
@@ -99,8 +103,8 @@ exports.getMySelf = async(req,res) =>{
 }
 exports.getAllUsers = async(req,res) =>{
     try {
-        const user = await userModel.find().select("name prn level attempt")
-        return res.status(200).json({users:user})
+        const users = await userModel.find().select("name prn level attempt time")
+        return res.status(200).json({users})
     } catch (error) {
         return res.status(400).json({message:error.message})
     }

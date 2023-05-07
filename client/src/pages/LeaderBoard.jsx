@@ -125,12 +125,12 @@ export default function ManagePage() {
   useEffect(()=>{
     let users;
     if(allUsers.length > 0)
-      users = allUsers.filter((user) => user.attempt > 0)
+      users = allUsers.filter((user) => user.level > 1)
     if(users?.length > 0){
       users.sort((a,b) =>{
         if(a.level > b.level)
             return -1;
-        else if(a == b && a.attempt < b.attempt)
+        else if(a.level==b.level &&  a.time < b.time)
             return -1;
         else
             return 1
@@ -145,7 +145,7 @@ export default function ManagePage() {
           </div>
       )
   }
-
+  console.log(leaderboardUsers)
   return (
     <div className='md:px-6 px-2 text-white'>
       <Navbar />
@@ -160,7 +160,8 @@ export default function ManagePage() {
                   <StyledTableCell align='center'>PRN</StyledTableCell>
 
                   <StyledTableCell align='center'>Level</StyledTableCell>
-                  <StyledTableCell align='center'>Attempts</StyledTableCell>
+                  <StyledTableCell align='center'>Last Submission</StyledTableCell>
+
                 </TableRow>
             </TableHead>
         <TableBody className=''>
@@ -169,13 +170,13 @@ export default function ManagePage() {
             : leaderboardUsers
           ).map((user,index) => (
             <>
-                <StyledTableRow key={index}>
+                {<StyledTableRow key={index}>
                     <StyledTableCell align='center' component="th" scope="row">{index + 1}</StyledTableCell>
                     <StyledTableCell align='center'>{user.name}</StyledTableCell>
                     <StyledTableCell align='center'>{user.prn}</StyledTableCell>
                     <StyledTableCell align='center'>{user.level}</StyledTableCell>
-                    <StyledTableCell align='center'>{user.attempt}</StyledTableCell>
-                </StyledTableRow>
+                    <StyledTableCell align='center'>{new Date(user.time).toLocaleTimeString('en-US')}</StyledTableCell>
+                </StyledTableRow>}
               </>
           ))}
 

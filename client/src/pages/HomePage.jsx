@@ -21,7 +21,13 @@ export default function HomPage() {
     const range = (start, end, step) => {
         return Array.from(Array.from(Array(Math.ceil((end - start) / step)).keys()), x => start + x * step);
     }
+    const [time,setTime] = React.useState()
     React.useEffect(() => {
+        setTime(0)
+        setInterval(()=>{
+            setTime(time+1)
+        },[1000])
+        
         if(localStorage.crypticToken)
             dispatch(getAllLevels())
     }, [])
@@ -70,6 +76,7 @@ export default function HomPage() {
         }
     }, [user?.level, levels])
     const handleSubmit = () => {
+        console.log(Date.now())
         if (word.toUpperCase() === userLevel?.word) {
             setGuessCorrect(true)
             setWord("")
@@ -78,18 +85,15 @@ export default function HomPage() {
             }, [2000])
             setIsCorrect(true)
             console.log(user.attempt)
-            dispatch(updateAttempt(user.attempt + 1))
-            dispatch(updateUser(user.level + 1))
+            dispatch(updateUser({level:user.level+1,time:Date.now()}))
             
         } else {
             setIsCorrect(false)
             setWord("")
-            dispatch(updateAttempt(user.attempt + 1))
             setTimeout(() => {
                 setIsCorrect(true)
             }, [4000])
-        }
-        
+        }        
     }
 
     if (loading) {
