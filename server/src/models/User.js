@@ -10,6 +10,15 @@ const userSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
+    time:{
+        type:Number,
+        required:true,
+        default:0
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
     prn:{
         type:String,
         required:true,
@@ -24,10 +33,17 @@ const userSchema = new mongoose.Schema({
         required:true,
         default:1
     },
+    attempt:{
+        type:Number,
+        required:true,
+        default:0
+    },
     password:{
         type:String,
         required:true
     }
+},{
+    timestamps:true
 })
 
 userSchema.pre("save", async function (next) {
@@ -37,6 +53,6 @@ userSchema.pre("save", async function (next) {
   
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-  });
+});
 
 module.exports = mongoose.model('users',userSchema)

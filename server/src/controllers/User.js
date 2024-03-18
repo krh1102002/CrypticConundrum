@@ -8,7 +8,6 @@ const generateToken = (_id) =>{
 }
 exports.signIn = async(req,res) =>{
     try {
-        console.log(req.body)
         const {email,password} = req.body
         const user = await userModel.findOne({email})
         if(!user)
@@ -25,6 +24,8 @@ exports.signIn = async(req,res) =>{
             prn:user.prn,
             level:user.level,
             year:user.year,
+            isAdmin:user.isAdmin,
+            attempt:user.attempt,
             token
         }
         return res.status(200).json({user:userData})
@@ -56,6 +57,8 @@ exports.signUp = async(req,res) =>{
             prn:user.prn,
             level:user.level,
             year:user.year,
+            isAdmin:user.isAdmin,
+            attempt:user.attempt,
             token
         }
         return res.status(201).json({user:userData});
@@ -63,11 +66,13 @@ exports.signUp = async(req,res) =>{
         return res.status(500).json({message:error.message})
     }
 }
-exports.updateLevel = async(req,res) =>{
+exports.updateUserLevel = async(req,res) =>{
     try {
         const {_id} = req.user
+        const {time} = req.body
         const user = await userModel.findByIdAndUpdate(_id,{
-            level:req.body.level
+            level:req.body.level,
+            time
         },{
             new:true
         })
@@ -76,10 +81,30 @@ exports.updateLevel = async(req,res) =>{
         return res.status(500).json({message:error.message})
     }
 }
+exports.updateUserAttempt = async(req,res) =>{
+    try {
+        const {_id} = req.user
+        const {attempt} = req.body
+
+        const user = await userModel.findByIdAndUpdate(_id,{attempt},{new:true})
+
+        return res.status(200).json({user})
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}
+exports.getMySelf = async(req,res) =>{
+    try {
+        const user = req.user;
+        return res.status(200).json({user})
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}
 exports.getAllUsers = async(req,res) =>{
     try {
-        const user = await userModel.find().select("name prn level")
-        return res.status(200).json({users:user})
+        const users = await userModel.find().select("name prn level attempt time")
+        return res.status(200).json({users})
     } catch (error) {
         return res.status(400).json({message:error.message})
     }
